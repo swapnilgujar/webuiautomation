@@ -48,9 +48,9 @@ public class TestLog {
 		return get();
 	}
 
-	public void createExtentRptTest(String testName) {
-		extentTest = extentReports.createTest(testName);
-		testClassName(String.format("Test Class Name -> [%s]", testName));
+	public void createExtentRptTest(String testMethodName) {
+		extentTest = extentReports.createTest(testMethodName);
+		testMethodName(String.format("Test Method Name -> [%s]", testMethodName));
 	}
 
 	public void createExtentRptTest(String testName, String testDescription) {
@@ -79,6 +79,13 @@ public class TestLog {
 		logger.info(testClassName);
 		extentTest.info(markupText(testClassName, ExtentColor.CYAN));
 	}
+	
+	//25-04-20:created to print test Method name
+	private void testMethodName(String testMethodName) {
+		logger.info(testMethodName);
+		extentTest.info(markupText(testMethodName, ExtentColor.CYAN));
+	}
+	
 
 	public void error(String logText) {
 		logger.error(logText);
