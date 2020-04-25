@@ -29,18 +29,26 @@ public abstract class BaseTest {
 	public void aaaSetupClassConfig() {
 		//added same code in @BeforeMethod 
 		//testLog.createExtentRptTest(getClass().getSimpleName());
+		//moved below code to @BeforeMethod to relaunch browser 
+		//for each test execution
+		/*try {
+			driver = Driver.getInstance().initialize();
+		} catch (Exception e) {
+			testLog.error(e);
+			throw new RunTimeException(e);
+		}*/
+	}
+
+	@BeforeMethod
+	public void setup(Method method) {
+		String testMethodName = method.getName(); 
+		testLog.createExtentRptTest(testMethodName);
 		try {
 			driver = Driver.getInstance().initialize();
 		} catch (Exception e) {
 			testLog.error(e);
 			throw new RunTimeException(e);
 		}
-	}
-	
-	@BeforeMethod
-	public void setup(Method method) {
-	    String testMethodName = method.getName(); 
-	    testLog.createExtentRptTest(testMethodName);
 	}
 
 	@AfterMethod
@@ -51,11 +59,14 @@ public abstract class BaseTest {
 			testLog.error(e);
 			throw new RunTimeException(e);
 		}
+		driver.quit();
 	}
 
 	@AfterTest
 	public void zzz_afterClassConfig() {
-			driver.quit();
+		//moved same code to @AfterMethod so that browser instance
+		//is closed after every test execution
+		//driver.quit();
 	}
 
 
