@@ -29,7 +29,7 @@ public abstract class BaseTest {
 	public void aaaSetupClassConfig() {
 		//added same code in @BeforeMethod 
 		//testLog.createExtentRptTest(getClass().getSimpleName());
-		//moved below code to @BeforeMethod to relaunch browser 
+		//moved  code to @BeforeMethod to relaunch browser 
 		//for each test execution
 		/*try {
 			driver = Driver.getInstance().initialize();

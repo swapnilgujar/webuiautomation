@@ -6,9 +6,9 @@
 	<test name="Test Execution">
 		<classes>
 			<class name="test.homepage.HomePageTests" />
-			<method>
+			<!-- <method>
 				<include name="launchandVerifyHomePageHeader" />
-			</method>
+			</method> -->
 		</classes>
 	</test>
 </suite>
