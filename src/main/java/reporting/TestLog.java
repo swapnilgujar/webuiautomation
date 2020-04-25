@@ -2,7 +2,9 @@ package reporting;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -21,6 +23,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import utils.Constants;
 import utils.Driver;
 
 public class TestLog {
@@ -29,15 +32,17 @@ public class TestLog {
 
 	private ExtentTest extentTest;
 	protected static TestLog testLog;
+	
+	protected static String currentDateTime = null;
 
 	private TestLog() {	}
 
 	public static TestLog init() {
 		ExtentHtmlReporter htmlReporter;
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
-
+		 currentDateTime = new SimpleDateFormat("dd-MMMM-yyyy_HH.mm.ss").format(Calendar.getInstance().getTime());
 		get();
-		htmlReporter = new ExtentHtmlReporter("test-results\\extent-report.html");
+		htmlReporter = new ExtentHtmlReporter("test-results\\extent-report_"+currentDateTime+".html");
 		htmlReporter.config().setTheme(Theme.DARK);
 		extentReports = new ExtentReports();
 		extentReports.attachReporter(htmlReporter);
@@ -95,7 +100,7 @@ public class TestLog {
 
 	public void error(ITestResult result, MediaEntityModelProvider mediaFile) {
 		String errorMsg = String.format("Test Case [%s] failed, due to error:: %s", result.getName(),
-				result.getThrowable());
+				result.getThrowable().getMessage());
 		logger.error(errorMsg);
 		logger.error(result.getThrowable());
 		extentTest.error("<font color=\"#ff0048\">" + errorMsg + "</font>", mediaFile);
