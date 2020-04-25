@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import pages.login.HomePage;
 import tests.BaseTest;
+import utils.SoftAssert;
 
 public class HomePageTests extends BaseTest {
 	
@@ -11,21 +12,21 @@ public class HomePageTests extends BaseTest {
 	public void launchandVerifyHomePageHeader() {
 		
 		String actualPageHeader = HomePage.getInstance().getPageHeader();
-		utils.SoftAssert.assertEquals(actualPageHeader, "Tutorials Library");
+		SoftAssert.assertEquals(actualPageHeader, "Tutorials Library");
 	}
 	
 	@Test
 	public void launchandVerifyHomePageHeader1() {
 		
 		String actualPageHeader = HomePage.getInstance().getPageHeader();
-		utils.SoftAssert.assertEquals(actualPageHeader, "Tutorials Library");
+		SoftAssert.assertEquals(actualPageHeader, "Tutorials Library");
 	}
 	
 	@Test
 	public void launchandVerifyHomePageHeader2() {
 		
 		String actualPageHeader = HomePage.getInstance().getPageHeader();
-		utils.SoftAssert.assertEquals(actualPageHeader, "Tutorial Library");
+		SoftAssert.assertEquals(actualPageHeader, "Tutorial Library");
 	}
 
 	
