@@ -20,5 +20,14 @@ public class HomePageTests extends BaseTest {
 		String actualPageHeader = HomePage.getInstance().getPageHeader();
 		utils.SoftAssert.assertEquals(actualPageHeader, "Tutorials Library");
 	}
+	
+	@Test
+	public void launchandVerifyHomePageHeader2() {
+		
+		String actualPageHeader = HomePage.getInstance().getPageHeader();
+		utils.SoftAssert.assertEquals(actualPageHeader, "Tutorial Library");
+	}
 
+	
+	
 }
