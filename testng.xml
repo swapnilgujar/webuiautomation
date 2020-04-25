@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Simple Logger Suite" parallel="tests"
+	thread-count="1">
+	<listeners> <listener class-name = "listeners.TestNGListener" /> </listeners>
+
+	<test name="Test Execution">
+		<classes>
+			<class name="test.homepage.HomePageTests" />
+			<method>
+				<include name="launchandVerifyHomePageHeader" />
+			</method>
+		</classes>
+	</test>
+</suite>
+
