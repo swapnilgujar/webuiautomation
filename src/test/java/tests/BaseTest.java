@@ -37,6 +37,7 @@ public abstract class BaseTest {
 			testLog.error(e);
 			throw new RunTimeException(e);
 		}*/
+		System.out.println();
 	}
 
 	@BeforeMethod
